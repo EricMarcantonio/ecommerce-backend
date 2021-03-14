@@ -1,15 +1,13 @@
-import express, { Request, Response } from "express";
-import { getAllUsers } from "./db/Users";
+import express from "express";
+
+import { UserRouter } from "./routes/Users";
+
+const port = 3000;
 
 const app = express();
 
-app.get("/", (req: Request, res: Response) => {
-  getAllUsers((data: any) => {
-    res.json(data)
-  })
-});
+app.use("/users", UserRouter)
 
-app.listen(3000, () => {
-  console.log("We good");
+app.listen(port, () => {
+  console.log(`Listening on port ${3000}`);
 });
-

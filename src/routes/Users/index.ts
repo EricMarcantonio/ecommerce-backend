@@ -1,13 +1,10 @@
 import { Router } from "express";
-import { getAllUsers } from "../../db/Users";
-import { HandleGetAllUsers } from "../../handlers/Users";
+import { HandleGetAllUsers, HandleGetSingleUserById } from "../../handlers/Users";
 
 const UserRouter = Router();
 
-UserRouter.get("/", (req, res) => {
-    HandleGetAllUsers((data: any) => {
-        res.send(data)
-    })
-})
+UserRouter.get("/all", HandleGetAllUsers)
+
+UserRouter.get("/user/:id", HandleGetSingleUserById)
 
 export { UserRouter };

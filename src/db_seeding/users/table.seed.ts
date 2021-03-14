@@ -1,26 +1,22 @@
-import {DB_POOL} from '../../db'
-import {checkErr} from '../../util'
+import { SendQuery } from "../../db/db";
 
-const UserTableSQL = `CREATE TABLE IF NOT EXISTS users (
-    id      int NOT NULL AUTO_INCREMENT,
-    fname   varchar(128) UNIQUE,
-    lname   varchar(128) UNIQUE,
-    logins  int,
-    PRIMARY KEY(id)
-)`;
+const UserTableSQL = 
+    `CREATE TABLE IF NOT EXISTS users (
+      id      int NOT NULL AUTO_INCREMENT,
+      fname   varchar(128),
+      lname   varchar(128),
+      logins  int,
+      PRIMARY KEY(id)
+    )`
+;
 
 export interface UserDataInterface {
-  id: number,
-  fname: string,
-  lname: string,
-  logins: number
+  id: number;
+  fname: string;
+  lname: string;
+  logins: number;
 }
 
-export const CreateUserTable = () => {
-  DB_POOL.getConnection((err, con) => {
-    checkErr(err);
-    con.query(UserTableSQL, (err, data) => {
-      checkErr(err)
-    });
-  });
+export const CreateUserTable = (callback?: any) => {
+  SendQuery(UserTableSQL, callback);
 };
