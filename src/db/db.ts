@@ -1,7 +1,7 @@
 import mysql from "mysql";
 
 export const DB_POOL = mysql.createPool({
-  host: "127.0.0.1",
+  host: "8d9a23dbaa7b.ngrok.io",
   user: "local",
   password: "mypass",
   database: "ecommerce",

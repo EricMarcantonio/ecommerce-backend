@@ -16,6 +16,7 @@
     "@types/mysql": "^2.15.18",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
-    "promise-mysql": "^5.0.3"
+    "promise-mysql": "^5.0.3",
+    "serverless-http": "^2.7.0"
   }
 }
